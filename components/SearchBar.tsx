@@ -5,6 +5,7 @@ import React, { FormEvent, useState } from 'react'
 
 const SearchBar = () => {
     const [searchPrompt, setSetSearchPrompt] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const isValidAmazonProductURL = (url: string) => {
       try {
@@ -31,6 +32,19 @@ const SearchBar = () => {
 
       const isValidLink = isValidAmazonProductURL(searchPrompt)
 
+      if (!isValidLink) return alert('Please provide a valid Amazon link')
+
+      try {
+        setIsLoading(true) 
+
+        // scrape product
+
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
+
     }
 
   return (
@@ -42,8 +56,12 @@ const SearchBar = () => {
             value={searchPrompt}
             onChange={(e) => setSetSearchPrompt(e.target.value)}
         />
-        <button className='searchbar-btn' type='submit'>
-            Search
+        <button 
+          className='searchbar-btn' 
+          type='submit'
+          disabled={ searchPrompt === ""}
+        >
+            { isLoading ? "Searching..." : "Search" }
         </button>
     </form>
   )
