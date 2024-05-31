@@ -14,6 +14,7 @@ export function extractPrice(...elements: any) {
   for (const element of elements) {
     const priceText = element.text().trim();
 
+    // find and clean up price text
     if(priceText) {
       const cleanPrice = priceText.replace(/[^\d.]/g, '');
 
@@ -22,7 +23,7 @@ export function extractPrice(...elements: any) {
       if (cleanPrice) {
         firstPrice = cleanPrice.match(/\d+\.\d{2}/)?.[0];
       } 
-
+      //return the modified price
       return firstPrice || cleanPrice;
     }
   }
