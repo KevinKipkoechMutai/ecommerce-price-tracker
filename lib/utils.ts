@@ -73,6 +73,8 @@ export function getHighestPrice(priceList: PriceHistoryItem[]) {
   return highestPrice.price;
 }
 
+//fetch the lowest price
+
 export function getLowestPrice(priceList: PriceHistoryItem[]) {
   let lowestPrice = priceList[0];
 
