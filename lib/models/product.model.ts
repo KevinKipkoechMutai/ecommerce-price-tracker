@@ -15,10 +15,10 @@ const productSchema = new mongoose.Schema({
     ],
     lowestPrice: { type: Number },
     highestPrice: { type: Number },
-    averagePrice: { type: Number },
     description: { type: String },
     category: { type: String },
     reviewCount: { type: Number },
+    averagePrice: { type: Number },
     isOutOfStock: { type: Boolean, default: false },
     users: [
         { email: { type: String, required: true } }
